@@ -1,24 +1,26 @@
-# Alignement de séquences
 
-[alignement_deterministe.py](https://github.com/clemsciences/alignement_sequence/blob/master/alignement_deterministe.py)
-- algorithme de Needleman-Wunsch : alignement global
-- algorithme de Smith-Waterman : alignement local
-- distance de Levenshtein : nombre d'opérations (ajout, suppression, modification) minimal pour passer d'une séquence à une autre
+# Sequence alignment
 
-
-[blast.py](https://github.com/clemsciences/alignement_sequence/blob/master/blast.py) : heuristique pour trouver des alignements locaux dans de très longues chaînes
+[deterministic_alignment.py](https://github.com/clemsciences/alignement_sequence/blob/master/deterministic_alignment.py)
+- Needleman-Wunsch algorithm: global alignment
+- Smith-Waterman algorithm: local alignment
+- Levenshtein distance: minimum number of operations (insertion, deletion, modification) to transform one sequence to an other sequence
 
 
-[main.py](https://github.com/clemsciences/alignement_sequence/blob/master/main.py) : exemples d'usages des algorithmes présentés
+[blast.py](https://github.com/clemsciences/alignement_sequence/blob/master/blast.py) : heuristics to find local alignmentsin very long chains
 
 
-[recuperation_donnees.py](https://github.com/clemsciences/alignement_sequence/blob/master/recuperation_donnees.py) : récupérations de mots grâce à nltk 
-1. On installe nltk avec # apt-get install nltk
-2. On télécharge le corpus Swadesh avec 
+[main.py](https://github.com/clemsciences/alignement_sequence/blob/master/main.py) : examples of presented algorithms
+
+
+[recuperation_donnees.py](https://github.com/clemsciences/alignement_sequence/blob/master/data_retrival.py) : word retrieval thanks to nltk
+
+1. Install nltk with # apt-get install nltk
+2. Download Swadesh corpus with
 ```python
 >>> import nltk
 >>> nltk.download()
 ```
 
 
-[utils.py](https://github.com/clemsciences/alignement_sequence/blob/master/utils.py) : quelques fonctions bien utiles mais inclassables
+[utils.py](https://github.com/clemsciences/alignement_sequence/blob/master/utils.py) : som useful functions which are unclassified

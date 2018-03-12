@@ -1,61 +1,54 @@
 # -*-coding:utf-8-*-
 
 """
-Les algorithmes implémentés apparaissent dans un article de Linux magazine
+Algorithms implemented here are originally for the French Linux magazine.
 """
 
 
 import random
 
-__author__ = "besnier"
+__author__ = "Clément Besnier <clemsciences@aol.com>"
 
 
-def etape1(seq_ent, k):
-    sous_seqs = []
+def step1(seq_ent, k):
+    sub_seqs = []
     taille = len(seq_ent)
     for i in range(taille - k + 1):
-        sous_seqs.append(seq_ent[i:i+k])
-    return sous_seqs
+        sub_seqs.append(seq_ent[i:i+k])
+    return sub_seqs
 
 
-def etape2(sous_seqs, base, k):
-    res_alignements = []
-    for sous_seq in sous_seqs:
+def step2(sub_seqs, base, k):
+    res_alignement = []
+    for sub_seqs in sub_seqs:
         for i, seq_base in enumerate(base):
-            res_alignements.append([])
+            res_alignement.append([])
             for j in range(len(seq_base) - k + 1):
-                if sous_seq == seq_base[j:j+k]:
-                    res_alignements[i].append(j)
-    return res_alignements
+                if sub_seqs == seq_base[j:j+k]:
+                    res_alignement[i].append(j)
+    return res_alignement
 
 
-# def etape3(seq_ent, seq_base, indice, taille, matrice_substitution):
-#     score = [-1]*len(seq_base)
-#     for i in range(indice, indice+taille):
-#         score
+def generate_sequences(length, alphabet):
+    return "".join([random.choice(alphabet) for _ in range(length)])
 
 
-
-
-def generer_sequences(taille, alphabet):
-    return "".join([random.choice(alphabet) for _ in range(taille)])
-
-
-def bruiter_sequence(seq, facteur):
+def sequence_noise(seq, factor):
     """
 
     :param seq:
-    :param facteur: float entre 0 et 1 qui représente la proportion de caractère qui sera remisée
+    :param factor: float between 0 and 1 which represents proportion of resampled characters
     :return:
     """
-    seq_bruitee = []
+    noised_seq = []
     alphabet = set([carac for carac in seq])
     for carac in seq:
-        if random.random() < facteur:
-            seq_bruitee.append(random.choice(alphabet))
+        if random.random() < factor:
+            noised_seq.append(random.choice(alphabet))
         else:
-            seq_bruitee.append(carac)
-    return "".join(seq_bruitee)
+            noised_seq.append(carac)
+    return "".join(noised_seq)
+
 
 if __name__ == "__main__":
     sequence = "TCAGACCGTTCATACAGAATTGGCGATCGTTCGGCGTATCGCCGAAATCACCGCCGTAAGCCGACCAGGGGTTGCCGTTA"\
@@ -65,8 +58,8 @@ if __name__ == "__main__":
     "CAAATAATTTCGGTGGCCGTGGTGTCGGCTCCGCCGCCTTCATACTGCACCGGGCGGGAAGGATCGACAGATTTGATCCA"\
     "GCGATACAGCGCGTCGTGATTAGCGCCGTGGCCTGATTCATTCCCCAGCG"
     base = ["AGGTAC", "GTCCAT"]
-    sous_seqs = etape1(sequence, 3)
+    sous_seqs = step1(sequence, 3)
     print(sous_seqs)
-    print(etape2(sous_seqs, base, 3))
+    print(step2(sous_seqs, base, 3))
 
 

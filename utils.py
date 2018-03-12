@@ -6,7 +6,7 @@ import enum
 
 __author__ = "besnier"
 
-alphabet_humain = list('azertyuiopqsdfghjklmwxcvbn')
+human_alphabet = list('azertyuiopqsdfghjklmwxcvbn')
 
 
 etats = ["M", "I", "S"]
@@ -19,33 +19,33 @@ def delta(predicat):
         return 0
 
 
-class Etats(enum.IntEnum):
-    CORRESPONDANCE = 0
+class States(enum.IntEnum):
+    MATCHING = 0
     INSERTION = 1
-    SUPPRESSION = 2
+    DELETION = 2
 
 
-def liste_vers_paires(l):
+def list_to_pairs(l):
     """
-    Passer d'une structure en list(list(str)) ) list([str, str])
+    From list(list(str)) ) to list([str, str])
     :param l:
     :return:
     """
     res = []
     for i in l:
-        taille_i = len(i)
-        for j in range(taille_i-1):
-            for k in range(j+1, taille_i):
+        length_i = len(i)
+        for j in range(length_i-1):
+            for k in range(j+1, length_i):
                 res.append([i[j], i[k]])
     return res
 
 
-def test_liste_vers_paries():
+def test_list_to_pairs():
     l = [[1, 2, 3], [45, 46], [98, 99, 100, 101]]
-    res = liste_vers_paires(l)
+    res = list_to_pairs(l)
     print(res)
     assert res == [[1, 2], [1, 3], [2, 3], [45, 46], [98, 99], [98, 100], [98, 101], [99, 100], [99, 101], [100, 101]]
 
 
 if __name__ == "__main__":
-    test_liste_vers_paries()
+    test_list_to_pairs()
