@@ -1,5 +1,7 @@
 # Alignement de séquences
 
+**[English version here](https://github.com/clemsciences/alignement_sequence/tree/english)**
+
 [alignement_deterministe.py](https://github.com/clemsciences/alignement_sequence/blob/master/alignement_deterministe.py)
 - algorithme de Needleman-Wunsch : alignement global
 - algorithme de Smith-Waterman : alignement local
